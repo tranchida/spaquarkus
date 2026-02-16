@@ -1,0 +1,16 @@
+GET http://localhost:8080/customers/11
+Content-Type: */*
+
+###
+
+POST http://localhost:8080/customers
+Content-Type: application/json
+
+{
+  "name": "John Doe"
+}
+
+###
+
+GET localhost:8080/bills/3
+Content-Type: */*
