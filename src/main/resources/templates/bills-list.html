@@ -1,0 +1,27 @@
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {#for bill in bills}
+        <tr>
+            <td>{bill.id}</td>
+            <td>{bill.description}</td>
+            <td>{bill.amount}</td>
+            <td>
+                <button class="outline secondary" 
+                        hx-delete="/bills/{bill.id}" 
+                        hx-target="#bill-list"
+                        hx-confirm="Are you sure?">
+                    Delete
+                </button>
+            </td>
+        </tr>
+        {/for}
+    </tbody>
+</table>

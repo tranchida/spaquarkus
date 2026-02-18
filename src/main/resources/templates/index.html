@@ -1,0 +1,19 @@
+{#include base.html title="Home"}
+    {#body}
+        <h1>Welcome to SpaQuarkus (HTMX Edition)</h1>
+        <p>This version uses <strong>Quarkus Qute</strong> for server-side rendering and <strong>htmx</strong> for dynamic interactions.</p>
+        
+        <div class="grid">
+            <article>
+                <header>Customers</header>
+                Manage your customers list.
+                <footer><a href="/customers" role="button">Go to Customers</a></footer>
+            </article>
+            <article>
+                <header>Bills</header>
+                Manage your bills.
+                <footer><a href="/bills" role="button">Go to Bills</a></footer>
+            </article>
+        </div>
+    {/body}
+{/include}

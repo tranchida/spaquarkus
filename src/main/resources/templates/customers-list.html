@@ -1,0 +1,25 @@
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {#for customer in customers}
+        <tr>
+            <td>{customer.id}</td>
+            <td>{customer.name}</td>
+            <td>
+                <button class="outline secondary" 
+                        hx-delete="/customers/{customer.id}" 
+                        hx-target="#customer-list"
+                        hx-confirm="Are you sure?">
+                    Delete
+                </button>
+            </td>
+        </tr>
+        {/for}
+    </tbody>
+</table>

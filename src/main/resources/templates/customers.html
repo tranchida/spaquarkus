@@ -1,0 +1,18 @@
+{#include base.html title="Customers"}
+    {#body}
+        <h1>Customers</h1>
+        
+        <div id="customer-list">
+            {#include customers-list.html /}
+        </div>
+
+        <hr>
+
+        <h2>Add Customer</h2>
+        <form hx-post="/customers" hx-target="#customer-list" hx-on::after-request="this.reset()">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <button type="submit">Add Customer</button>
+        </form>
+    {/body}
+{/include}

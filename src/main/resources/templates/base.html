@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title ?: 'SpaQuarkus'}</title>
+    <script src="https://unpkg.com/htmx.org@2.0.2"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <style>
+        body { padding-top: 2rem; }
+        .container { max-width: 900px; }
+    </style>
+</head>
+<body>
+    <nav class="container">
+        <ul>
+            <li><strong>SpaQuarkus</strong></li>
+        </ul>
+        <ul>
+            <li><a href="/customers">Customers</a></li>
+            <li><a href="/bills">Bills</a></li>
+        </ul>
+    </nav>
+    <main class="container">
+        {#insert body}{/insert}
+    </main>
+</body>
+</html>
