@@ -80,21 +80,23 @@
 # You can find more information about the UBI base runtime images and their configuration here:
 # https://rh-openjdk.github.io/redhat-openjdk-containers/
 ###
-FROM registry.access.redhat.com/ubi9/openjdk-21-runtime:1.24
+FROM eclipse-temurin:25-jre
 
-ENV LANGUAGE='en_US:en'
+WORKDIR /deployments
 
+# Create a dedicated non-root user
+RUN groupadd -r appgroup && useradd -r -u 185 -g appgroup appuser
 
 # We make four distinct layers so if there are application changes the library layers can be re-used
-COPY --chown=185 target/quarkus-app/lib/ /deployments/lib/
-COPY --chown=185 target/quarkus-app/*.jar /deployments/
-COPY --chown=185 target/quarkus-app/app/ /deployments/app/
-COPY --chown=185 target/quarkus-app/quarkus/ /deployments/quarkus/
+COPY --chown=appuser:appgroup target/quarkus-app/lib/ /deployments/lib/
+COPY --chown=appuser:appgroup target/quarkus-app/*.jar /deployments/
+COPY --chown=appuser:appgroup target/quarkus-app/app/ /deployments/app/
+COPY --chown=appuser:appgroup target/quarkus-app/quarkus/ /deployments/quarkus/
 
 EXPOSE 8080
-USER 185
-ENV JAVA_OPTS_APPEND="-Dquarkus.http.host=0.0.0.0 -Djava.util.logging.manager=org.jboss.logmanager.LogManager"
-ENV JAVA_APP_JAR="/deployments/quarkus-run.jar"
+USER appuser
 
-ENTRYPOINT [ "/opt/jboss/container/java/run/run-java.sh" ]
+ENV JAVA_OPTS_APPEND="-Dquarkus.http.host=0.0.0.0 -Djava.util.logging.manager=org.jboss.logmanager.LogManager"
+
+ENTRYPOINT ["java", "-jar", "/deployments/quarkus-run.jar"]
 

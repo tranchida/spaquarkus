@@ -1,5 +1,30 @@
-*
-!target/*-runner
-!target/*-runner.jar
-!target/lib/*
-!target/quarkus-app/*
+# Ignore everything by default, then allow only what's needed for multi-stage build
+target/
+.mvn/
+*.iml
+.idea/
+.vscode/
+.settings/
+.classpath
+.project
+
+# Local node_modules (handled by quarkus-web-bundler via mvnpm during Maven build)
+node_modules/
+
+# Docker meta-files
+Dockerfile
+.dockerignore
+
+# Git and CI metadata
+.git/
+.github/
+.gitignore
+
+# Secrets and local config
+*.env
+.env*
+*.pem
+*.key
+
+# Documentation
+*.md
