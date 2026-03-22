@@ -1,18 +1,26 @@
 {#include base.html title="Customers"}
     {#body}
-        <h1>Customers</h1>
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-black text-gray-900 tracking-tight">Customer Repository</h1>
+        </div>
         
-        <div id="customer-list">
-            {#include customers-list.html /}
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-12">
+            <div id="customer-list">
+                {#include customers-list.html /}
+            </div>
         </div>
 
-        <hr>
-
-        <h2>Add Customer</h2>
-        <form hx-post="/customers" hx-target="#customer-list" hx-on::after-request="this.reset()">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <button type="submit">Add Customer</button>
-        </form>
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 max-w-xl">
+            <h2 class="text-xl font-bold text-gray-900 mb-6">Add New Customer</h2>
+            <form hx-post="/customers" hx-target="#customer-list" hx-on::after-request="this.reset()" class="space-y-4">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                    <input type="text" id="name" name="name" required class="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all">
+                </div>
+                <button type="submit" class="w-full py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-colors shadow-lg shadow-blue-100">
+                    Add Customer
+                </button>
+            </form>
+        </div>
     {/body}
 {/include}

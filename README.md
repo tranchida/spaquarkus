@@ -2,10 +2,10 @@
 
 > Application full-stack moderne utilisant Quarkus Qute (SSR) et htmx pour une expérience SPA sans JavaScript complexe.
 
-[![Java](https://img.shields.io/badge/Java-21-orange.svg)](https://www.oracle.com/java/)
-[![Quarkus](https://img.shields.io/badge/Quarkus-3.31.3-blue.svg)](https://quarkus.io/)
+[![Java](https://img.shields.io/badge/Java-25-orange.svg)](https://www.oracle.com/java/)
+[![Quarkus](https://img.shields.io/badge/Quarkus-3.32.3-blue.svg)](https://quarkus.io/)
 [![htmx](https://img.shields.io/badge/htmx-2.0.2-blue.svg)](https://htmx.org/)
-[![Pico CSS](https://img.shields.io/badge/Pico_CSS-2.0.6-pink.svg)](https://picocss.com/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.15-38bdf8.svg)](https://tailwindcss.com/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## 📋 Table des matières
@@ -29,8 +29,8 @@
 
 ✅ Rendu côté serveur ultra-rapide avec **Quarkus Qute**  
 ✅ Interactions dynamiques sans framework JS lourd grâce à **htmx**  
-✅ Design moderne et responsive avec **Pico CSS**  
-✅ Gestion locale des assets via **Quarkus Web Bundler** & **mvnpm**  
+✅ Design moderne, premium et responsive avec **Tailwind CSS**  
+✅ Utilisation de **Tailwind Play CDN** pour une personnalisation flexible sans build complexe  
 ✅ Stockage en mémoire thread-safe avec injection par constructeur  
 ✅ Build natif (GraalVM) supporté  
 ✅ Tests unitaires et d'intégration  
@@ -38,14 +38,10 @@
 ## 🛠 Technologies
 
 ### Backend & Frontend (SSR)
-- **[Quarkus 3.31.3](https://quarkus.io/)** - Framework Java cloud-native
+- **[Quarkus 3.32.3](https://quarkus.io/)** - Framework Java cloud-native
 - **[Qute Templates](https://quarkus.io/guides/qute)** - Moteur de templates type-safe pour Quarkus
 - **[htmx](https://htmx.org/)** - Permet d'accéder aux AJAX, CSS Transitions, WebSockets et Server Sent Events directement dans le HTML
-- **[Pico CSS](https://picocss.com/)** - Framework CSS minimaliste pour un web élégant
-
-### Asset Management
-- **[Quarkus Web Bundler](https://github.com/quarkiverse/quarkus-web-bundler)** - Bundle automatiquement vos assets (JS, CSS)
-- **[mvnpm](https://mvnpm.org/)** - Dépendances NPM directement dans Maven
+- **[Tailwind CSS](https://tailwindcss.com/)** - Framework CSS utilitaire pour un design sur mesure
 
 ## 📦 Prérequis
 
@@ -148,15 +144,12 @@ spaquarkus/
 │   │   │   └── JacksonConfig.java           # Configuration JSON
 │   │   ├── resources/
 │   │   │   ├── templates/                   # Templates Qute (.html)
-│   │   │   │   ├── base.html                # Layout principal
+│   │   │   │   ├── base.html                # Layout principal (CDN Tailwind/htmx)
 │   │   │   │   ├── index.html               # Page d'accueil
 │   │   │   │   └── ...-list.html            # Fragments htmx
-│   │   │   ├── web/                         # Assets (JS/CSS) pour Web Bundler
-│   │   │   │   ├── app.js
-│   │   │   │   └── app.css
 │   │   │   └── application.properties       # Config Quarkus
 │   └── test/java/                           # Tests unitaires et intégration
-├── pom.xml                                  # Dépendances (incluant mvnpm)
+├── pom.xml                                  # Configuration Maven (Java 25)
 └── README.md
 ```
 

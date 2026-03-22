@@ -5,19 +5,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title ?: 'SpaQuarkus'}</title>
-    {#bundle /}
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-slate-50 text-slate-900;
+            }
+        }
+        @layer components {
+            .btn-primary {
+                @apply bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors shadow-sm inline-flex items-center gap-2;
+            }
+            .btn-secondary {
+                @apply bg-white text-slate-700 border border-slate-200 px-4 py-2 rounded-lg font-medium hover:bg-slate-50 transition-colors shadow-sm inline-flex items-center gap-2;
+            }
+            .card {
+                @apply bg-white p-6 rounded-xl border border-slate-200 shadow-sm;
+            }
+            .input {
+                @apply w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all;
+            }
+            .table-container {
+                @apply overflow-x-auto border border-slate-200 rounded-xl shadow-sm;
+            }
+            .table {
+                @apply min-w-full divide-y divide-slate-200;
+            }
+            .th {
+                @apply px-6 py-3 bg-slate-50 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider;
+            }
+            .td {
+                @apply px-6 py-4 whitespace-nowrap text-sm text-slate-600;
+            }
+        }
+    </style>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
 </head>
-<body>
-    <nav class="container">
-        <ul>
-            <li><strong>SpaQuarkus</strong></li>
-        </ul>
-        <ul>
-            <li><a href="/customers">Customers</a></li>
-            <li><a href="/bills">Bills</a></li>
-        </ul>
-    </nav>
-    <main class="container">
+<body class="bg-gray-50 text-gray-900 font-sans leading-normal tracking-normal">
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="text-2xl font-extrabold text-blue-600 tracking-tight">SpaQuarkus</span>
+            </div>
+            <ul class="flex space-x-6 font-medium">
+                <li><a href="/" class="text-gray-600 hover:text-blue-600 transition-colors">Home</a></li>
+                <li><a href="/customers" class="text-gray-600 hover:text-blue-600 transition-colors">Customers</a></li>
+                <li><a href="/bills" class="text-gray-600 hover:text-blue-600 transition-colors">Bills</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container mx-auto px-4 py-8">
         {#insert body}{/insert}
     </main>
 </body>

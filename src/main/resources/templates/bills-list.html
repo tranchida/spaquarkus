@@ -1,28 +1,30 @@
 {@java.util.List<ch.tranchida.sample.quarkus.bill.Bill> bills}
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Description</th>
-            <th>Amount</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {#for bill in bills}
-        <tr>
-            <td>{bill.id}</td>
-            <td>{bill.description}</td>
-            <td>{bill.amount}</td>
-            <td>
-                <button class="outline secondary" 
-                        hx-delete="/bills/{bill.id}" 
-                        hx-target="#bill-list"
-                        hx-confirm="Are you sure?">
-                    Delete
-                </button>
-            </td>
-        </tr>
-        {/for}
-    </tbody>
-</table>
+<div class="table-container">
+    <table class="table">
+        <thead class="bg-gray-50 border-b border-gray-100">
+            <tr>
+                <th class="th">ID</th>
+                <th class="th">Description</th>
+                <th class="th">Amount</th>
+                <th class="th text-right">Actions</th>
+            </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100">
+            {#for bill in bills}
+            <tr class="hover:bg-emerald-50/30 transition-colors">
+                <td class="td font-mono">{bill.id}</td>
+                <td class="td font-semibold text-gray-900">{bill.description}</td>
+                <td class="td font-bold text-emerald-600">${bill.amount}</td>
+                <td class="td text-right">
+                    <button class="px-4 py-1.5 text-xs font-bold text-red-600 border border-red-200 rounded-lg hover:bg-red-50 transition-colors" 
+                            hx-delete="/bills/{bill.id}" 
+                            hx-target="#bill-list"
+                            hx-confirm="Are you sure?">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+            {/for}
+        </tbody>
+    </table>
+</div>
